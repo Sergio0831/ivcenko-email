@@ -7,14 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Enable CORS for all routes
-// Enable CORS for all routes
-app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', '*');
-	// Add other CORS headers if needed (e.g., methods, headers)
-	res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	next();
-});
+app.use(cors());
 
 // Parse incoming JSON and form data
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,7 +36,7 @@ app.get('/about', (req, res) => {
 // Handle form submissions
 app.post('/send', async (req, res) => {
 	res.send('NodeJS + Express + Typescript App Up! 👍');
-	const { name, email, message } = await request.json();
+	const { name, email, message } = await req.body;
 
 	// Email content
 	const mailOptions = {
