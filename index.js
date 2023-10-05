@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
 	res.send('Hey this is my API running 🥳');
 });
 
+app.get('/about', (req, res) => {
+	res.send('This is my about route..... ');
+});
+
 // Handle form submissions
 app.post('/send', async (req, res) => {
 	res.send('NodeJS + Express + Typescript App Up! 👍');
