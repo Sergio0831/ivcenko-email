@@ -36,7 +36,7 @@ app.get('/about', (req, res) => {
 // Handle form submissions
 app.post('/send', async (req, res) => {
 	res.send('NodeJS + Express + Typescript App Up! 👍');
-	const { name, email, message } = await req.body;
+	const { name, email, message } = await request.json();
 
 	// Email content
 	const mailOptions = {
