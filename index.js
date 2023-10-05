@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Enable CORS for all routes
-app.use(cors());
+// app.use(cors());
 
 // Parse incoming JSON and form data
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,18 +25,9 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-app.get('/', (req, res) => {
-	res.send('Hey this is my API running 🥳');
-});
-
-app.get('/about', (req, res) => {
-	res.send('This is my about route..... ');
-});
-
 // Handle form submissions
 app.post('/send', async (req, res) => {
-	res.send('NodeJS + Express + Typescript App Up! 👍');
-	const { name, email, message } = await req.json();
+	const { name, email, message } = await req.body;
 
 	// Email content
 	const mailOptions = {
