@@ -25,9 +25,12 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
+app.get('/', (req, res) => {
+	res.send('Hey this is my API running 🥳');
+});
+
 // Handle form submissions
 app.post('/send', async (req, res) => {
-	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.send('NodeJS + Express + Typescript App Up! 👍');
 	const { name, email, message } = await req.body;
 
@@ -54,3 +57,5 @@ app.post('/send', async (req, res) => {
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });
+
+module.exports = app;
